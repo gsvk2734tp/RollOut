@@ -11,10 +11,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
-/**
- Проверка авторизации
- */
 
+/**
+ * Проверка авторизации
+ */
 
 
 public class AuthSislo {
@@ -33,21 +33,22 @@ public class AuthSislo {
         driver.quit();
         driver = null;
     }
+
     @Test
     public void auth() throws InterruptedException {
-    driver.get("");
+        driver.get("");
 
-    //Редирект на страницу аутентификации
-    wait.until(titleIs("Silso"));
-    driver.findElement(By.id("UserName")).sendKeys("admin");
-    driver.findElement(By.id("Password")).sendKeys("123123123");
-    driver.findElement(By.cssSelector("button.btn-login")).click();
+        //Редирект на страницу аутентификации
+        wait.until(titleIs("Silso"));
+        driver.findElement(By.id("UserName")).sendKeys("admin");
+        driver.findElement(By.id("Password")).sendKeys("123123123");
+        driver.findElement(By.cssSelector("button.btn-login")).click();
 
-    //Ждем редиректа
-    wait.until(titleIs("Rollout.WebApplication"));
-    //Кастыль из-за необходимости обновлять страницу после входа
-    Thread.sleep(2000);
-    driver.get("http://rollout-test.nsms.site/organizations");
-    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
+        //Ждем редиректа
+        wait.until(titleIs("Rollout.WebApplication"));
+        //Кастыль из-за необходимости обновлять страницу после входа
+        Thread.sleep(2000);
+        driver.get("http://rollout-test.nsms.site/organizations");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }
 }

@@ -10,29 +10,33 @@ public class RandomStr {
     //абвгдеёжзийклмнопрстуфхцчшщъыьэюя АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
     static int random;
     static char[] sumb;
+
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int leng = Integer.parseInt(reader.readLine());
         printStr(leng);
         System.out.println();
-       // System.out.println(getStrD(leng));
+        // System.out.println(getStrD(leng));
     }
+
     public static void printStr(int leng) throws IOException {
         sumb = Alf.toCharArray();
         for (int i = 0; i < leng; i++) {
-            random = (int) (Math.random()*Alf.length());
+            random = (int) (Math.random() * Alf.length());
             System.out.print(sumb[random]);
         }
     }
+
     public static String getStr(int leng) {
         sumb = Alf.toCharArray();
         String line = "";
         for (int i = 0; i < leng; i++) {
-            random = (int) (Math.random()*Alf.length());
+            random = (int) (Math.random() * Alf.length());
             line += (sumb[random]);
         }
-    return line;
+        return line;
     }
+
     public static String getStrD(int leng) {
         sumb = Alf.toCharArray();
         String line = "";
@@ -40,7 +44,7 @@ public class RandomStr {
             if (i == 63 || i == 127 || i == 191) {
                 line += ".";
             } else {
-                random = (int) (Math.random()*Alf.length());
+                random = (int) (Math.random() * Alf.length());
                 line += (sumb[random]);
             }
         }

@@ -12,14 +12,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-/** Групповые операции */
+/**
+ * Групповые операции
+ */
 
 public class GroupOperations extends RollOutWeb {
 
     @Before
     public void setUp() throws InterruptedException {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver, 10);
         //Открытие
         driver.get(URL_NSMS_SITE);
         wait.until(titleIs(TITLE_APP));
@@ -36,7 +38,7 @@ public class GroupOperations extends RollOutWeb {
         driver.findElement(By.cssSelector("a.toolbar_button:nth-child(1)")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.actions_button")));
         driver.findElement(By.cssSelector("button.actions_button")).click();
-        Thread.sleep(1000); 
+        Thread.sleep(1000);
     }
 
     @After

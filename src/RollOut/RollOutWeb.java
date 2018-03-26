@@ -10,11 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public abstract class RollOutWeb {
-        public WebDriver driver;
-        public WebDriverWait wait;
-        public int count = 0;
-        public char[] specSumb = {'!','#','$','%','&','\'','*','+','-','/','=','?','^','_','`','{','|','}','~'};
-
+    public WebDriver driver;
+    public WebDriverWait wait;
+    public int count = 0;
+    public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
 
 
     public void createUsers(int number) throws InterruptedException {
@@ -33,7 +32,7 @@ public abstract class RollOutWeb {
         }
     }
 
-        public void createUser(String userName, String email, String mobile) throws InterruptedException {
+    public void createUser(String userName, String email, String mobile) throws InterruptedException {
         //Открытие карточки для создания пользователя
         driver.findElement(By.cssSelector("a.toolbar_button")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));

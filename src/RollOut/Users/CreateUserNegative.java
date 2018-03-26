@@ -18,7 +18,7 @@ public class CreateUserNegative extends RollOutWeb {
     @Before
     public void setUp() {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver, 10);
         //Открытие
         driver.get(URL_NSMS_SITE);
         wait.until(titleIs(TITLE_APP));

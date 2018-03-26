@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- Проверка видимости элементов на странице Организации
+ * Проверка видимости элементов на странице Организации
  */
 
 public class OrgElement {
@@ -41,7 +41,7 @@ public class OrgElement {
 
         //Проверка текстовок и всех элементов на центральной странице
         String s = driver.findElement(By.cssSelector("div.header")).getText();
-        Assert.assertEquals(s,"Организации зарегистрированные в Rollout Center");
+        Assert.assertEquals(s, "Организации зарегистрированные в Rollout Center");
         driver.findElement(By.xpath("//div[contains(text(),'Организации зарегистрированные в Rollout Center')]"));
         driver.findElement(By.xpath("//a[text()='Добавить организацию']"));
         driver.findElement(By.xpath("//th[text()='Название']"));

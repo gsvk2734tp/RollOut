@@ -16,40 +16,41 @@ import java.util.List;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
-Проверка создания пользователей */
+ * Проверка создания пользователей
+ */
 
 public class CreateMoreUsers extends RollOutWeb {
 
     @Before
     public void setUp() throws InterruptedException {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver, 10);
 
         driver.get("https://10.0.15.39:8811/account/login");
-            //Редирект на страницу аутентификации
-            wait.until(titleIs("Silso"));
-            driver.findElement(By.id("UserName")).sendKeys("alice");
-            driver.findElement(By.id("Password")).sendKeys("P@ssw0rd");
-            driver.findElement(By.cssSelector("button.btn-login")).click();
+        //Редирект на страницу аутентификации
+        wait.until(titleIs("Silso"));
+        driver.findElement(By.id("UserName")).sendKeys("alice");
+        driver.findElement(By.id("Password")).sendKeys("P@ssw0rd");
+        driver.findElement(By.cssSelector("button.btn-login")).click();
 
-            //Ждем редиректа
-            driver.get("http://10.0.15.39:8090/organizations");
-            wait.until(titleIs("Rollout.WebApplication"));
-            //Кастыль из-за необходимости обновлять страницу после входа
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
-            driver.findElement(By.cssSelector("div.header-menu_icon-link")).click();
+        //Ждем редиректа
+        driver.get("http://10.0.15.39:8090/organizations");
+        wait.until(titleIs("Rollout.WebApplication"));
+        //Кастыль из-за необходимости обновлять страницу после входа
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
+        driver.findElement(By.cssSelector("div.header-menu_icon-link")).click();
 
-            driver.get("http://10.0.15.39:8090/users");
-            //Выбор выпадающего списка
-            driver.findElement(By.cssSelector("div.header-menu_icon-link")).click();
-            driver.findElement(By.className("dropdown-menu_item")).click();
+        driver.get("http://10.0.15.39:8090/users");
+        //Выбор выпадающего списка
+        driver.findElement(By.cssSelector("div.header-menu_icon-link")).click();
+        driver.findElement(By.className("dropdown-menu_item")).click();
 
-            //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='alex75']")));
+        //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='alex75']")));
 
     }
 
     @Test
-        public void newUser() throws IOException, InterruptedException {
+    public void newUser() throws IOException, InterruptedException {
         //Открытие
         wait.until(titleIs("Rollout.WebApplication"));
         //Открытие карточки для создания пользователя

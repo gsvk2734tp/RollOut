@@ -12,13 +12,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-/** Удаление пользователя. Возможно стоит запускать после теста на создания пользователей */
+/**
+ * Удаление пользователя. Возможно стоит запускать после теста на создания пользователей
+ */
 
 public class DeleteUser extends RollOutWeb {
     @Before
     public void setUp() throws InterruptedException {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver, 10);
         //Открытие
         driver.get(URL_NSMS_SITE);
         wait.until(titleIs(TITLE_APP));
