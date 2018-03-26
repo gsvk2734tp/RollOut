@@ -63,7 +63,7 @@ public class CreateUserNegative extends RollOutWeb {
         createUser("User" + count, "gmail@gmail.com", "   +712132123456789 "); //20 симв с пробелами
         */
 
-        /** Проверка Описания негативные - еще не реализовали валидацию */
+        /** Проверка Описания негативные - еще не реализовали валидацию  */
         // createUser("User" + count, "gmail@gmail.com", "+71234", RandomStrings.getStr(129)); // 129 симв
     }
 
