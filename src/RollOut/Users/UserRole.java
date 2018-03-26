@@ -8,6 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UserRole extends RollOutWeb {
+    /**
+     * Проверка ролей. Пока что не реализована.
+     */
+
     @Before
     public void setUp() throws InterruptedException {
         driver = new ChromeDriver();
