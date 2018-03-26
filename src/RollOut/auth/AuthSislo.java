@@ -28,11 +28,6 @@ public class AuthSislo {
         wait = new WebDriverWait(driver, 10);
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-        driver = null;
-    }
 
     @Test
     public void auth() throws InterruptedException {
@@ -50,5 +45,11 @@ public class AuthSislo {
         Thread.sleep(2000);
         driver.get("http://rollout-test.nsms.site/organizations");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
+        driver = null;
     }
 }
