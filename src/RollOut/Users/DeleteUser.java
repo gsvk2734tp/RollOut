@@ -2,6 +2,7 @@ package RollOut.Users;
 
 import RollOut.RollOutWeb;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -29,13 +30,18 @@ public class DeleteUser extends RollOutWeb {
 
     @Test
     public void deleteUsers() throws InterruptedException {
-        count = 2;
-        createUsers(count);
+        int number = 2;
+        createUsers(number);
 
-        for (int i = 0; i < count; i++) {
-            driver.findElement(By.xpath("//td[text()='User" + count + "']")).click();
+        for (int i = number-1; i >= 0; i--) {
+            driver.findElement(By.xpath("//td[text()='User" + i + "']")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".icon.icon-web-general.icons-general-delete")));
             driver.findElement(By.cssSelector(".icon.icon-web-general.icons-general-delete")).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.actions_button")));
+            driver.findElement(By.cssSelector("button.actions_button")).click();
+            Thread.sleep(1000);
+            //Проверяем, что пользователь удален
+            Assert.assertTrue(driver.findElements(By.xpath("//td[text()='User" + i + "']")).isEmpty());
         }
     }
 
