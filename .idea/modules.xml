@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Selenium.iml" filepath="$PROJECT_DIR$/Selenium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infotecs.iml" filepath="$PROJECT_DIR$/.idea/modules/infotecs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infotecs_main.iml" filepath="$PROJECT_DIR$/.idea/modules/infotecs_main.iml" group="infotecs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infotecs_test.iml" filepath="$PROJECT_DIR$/.idea/modules/infotecs_test.iml" group="infotecs" />
+    </modules>
+  </component>
+</project>
