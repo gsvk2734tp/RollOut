@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
@@ -28,16 +29,10 @@ public class OrgElement {
         actions = new Actions(driver);
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-        driver = null;
-    }
-
     @Test
     public void orgVisiable() {
-        driver.get("http://rollout.nsms.site/organizations");
-        wait.until(titleIs("Rollout.WebApplication"));
+        driver.get(URL_NSMS_SITE);
+        wait.until(titleIs(TITLE_APP));
 
         //Проверка текстовок и всех элементов на центральной странице
         String s = driver.findElement(By.cssSelector("div.header")).getText();
@@ -70,5 +65,11 @@ public class OrgElement {
         //Проверка боковой панели
 
         //Проверка шапки
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
+        driver = null;
     }
 }
