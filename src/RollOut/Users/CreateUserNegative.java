@@ -13,6 +13,12 @@ import java.io.IOException;
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
+/**
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий негативные сценарии создания пользователя
+ * TfsTestCase xxx-xxx
+ */
+
 public class CreateUserNegative extends RollOutWeb {
 
     @Before
@@ -26,7 +32,7 @@ public class CreateUserNegative extends RollOutWeb {
     }
 
     @Test
-    public void newUser() throws IOException, InterruptedException {
+    public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка имени негативные сценарии
         createUserNegative("", "", ""); // все поля пустые
         createUserNegative("", "gmail@gmail.com", ""); // пустое user

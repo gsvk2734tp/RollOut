@@ -13,7 +13,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Групповые операции
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий групповые операции.
+ * TfsTestCase xxx-xxx
  */
 
 public class GroupOperations extends RollOutWeb {

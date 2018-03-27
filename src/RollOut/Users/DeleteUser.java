@@ -14,7 +14,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Удаление пользователя. Возможно стоит запускать после теста на создания пользователей
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий удаление пользователя.
+ * TfsTestCase xxx-xxx
  */
 
 public class DeleteUser extends RollOutWeb {

@@ -19,7 +19,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Проверка создания пользователя
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий позитивные сценарии создания пользователя
+ * TfsTestCase xxx-xxx
  */
 
 public class CreateUserPositive extends RollOutWeb {
@@ -35,7 +37,7 @@ public class CreateUserPositive extends RollOutWeb {
     }
 
     @Test
-    public void newUser() throws IOException, InterruptedException {
+    public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
         driver.findElement(By.cssSelector("a.toolbar_button")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));

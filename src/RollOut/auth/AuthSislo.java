@@ -13,9 +13,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Проверка авторизации
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий авторизацию
+ * TfsTestCase xxx-xxx
  */
-
 
 public class AuthSislo {
     private WebDriver driver;

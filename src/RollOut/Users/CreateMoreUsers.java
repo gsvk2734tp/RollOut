@@ -16,7 +16,9 @@ import java.util.List;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Проверка создания пользователей
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий создание большого количества пользователей
+ * TfsTestCase xxx-xxx
  */
 
 public class CreateMoreUsers extends RollOutWeb {
@@ -50,7 +52,7 @@ public class CreateMoreUsers extends RollOutWeb {
     }
 
     @Test
-    public void newUser() throws IOException, InterruptedException {
+    public void createNewUsers() throws IOException, InterruptedException {
         //Открытие
         wait.until(titleIs("Rollout.WebApplication"));
         //Открытие карточки для создания пользователя
