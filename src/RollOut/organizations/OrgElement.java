@@ -35,6 +35,7 @@ public class OrgElement {
         wait.until(titleIs(TITLE_APP));
 
         //Проверка текстовок и всех элементов на центральной странице
+        //
         String s = driver.findElement(By.cssSelector("div.header")).getText();
         Assert.assertEquals(s, "Организации зарегистрированные в Rollout Center");
         driver.findElement(By.xpath("//div[contains(text(),'Организации зарегистрированные в Rollout Center')]"));
