@@ -56,9 +56,9 @@ public class CreateUserPositive extends RollOutWeb {
         //Проверка email позитивные сценарии
         createUser("User" + count, "z@1", "+7"); // 1 симв
         createUser("User" + count, RandomStr.getStr(63) + "@" + "g", "+7"); //63 и 1 симв
-        createUser("User" + count, "A" + "@" + RandomStr.getStrD(252), "+7"); // 1 и 252
+        createUser("User" + count, "A" + "@" + RandomStr.getStrDomain(252), "+7"); // 1 и 252
         createUser("User" + count, "3!#$%&'*+-/=?^_`{|}@d", "+7"); // спецсимволы в локальной части
-        createUser("User" + count, (RandomStr.getStr(60) + "@" + RandomStr.getStrD(193)), "+7"); // 254 cимв
+        createUser("User" + count, (RandomStr.getStr(60) + "@" + RandomStr.getStrDomain(193)), "+7"); // 254 cимв
 
         //Проверка телефона позитивные сценарии, на текущей момент для поля нет ограничений
         createUser("User" + count, "z@1", "123"); // от трех симв

@@ -46,7 +46,7 @@ public class CreateUserNegative extends RollOutWeb {
 
         createUserNegative("User", "alice" + "@", ""); // доменная 0 симв
         createUserNegative("User", "alice" + "@" + RandomStr.getStr(65), ""); // доменная более 63 без точки
-        createUserNegative("User", "1" + "@" + RandomStr.getStrD(253), ""); // более 252 симв
+        createUserNegative("User", "1" + "@" + RandomStr.getStrDomain(253), ""); // более 252 симв
 
         // Проверка на спецсимволы, запрещены в доменной части
         for (char sumb : specSumb) {
