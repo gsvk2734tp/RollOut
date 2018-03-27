@@ -31,7 +31,7 @@ public class DeleteUser extends RollOutWeb {
     }
 
     @Test
-    public void deleteUsers() throws InterruptedException {
+    public void deleteUsersAndCheckVisible() throws InterruptedException {
         int number = 2;
         createUsers(number);
 

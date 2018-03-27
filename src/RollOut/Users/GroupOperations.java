@@ -32,7 +32,7 @@ public class GroupOperations extends RollOutWeb {
     }
 
     @Test
-    public void groupOper() throws InterruptedException {
+    public void checkGroupOperations() throws InterruptedException {
         //Массовое удаление
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='User1']")));
         driver.findElement(By.cssSelector("tbody tr:first-child .checkbox")).click();
