@@ -14,7 +14,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Проверка видимости элементов на странице Организации
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий видимость элементов и корректность текстовок на вкладке Организации
+ * TfsTestCase xxx-xxx
  */
 
 public class OrgElement {

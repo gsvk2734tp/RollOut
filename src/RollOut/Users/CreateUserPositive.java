@@ -19,7 +19,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Проверка создания пользователя
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий позитивные сценарии создания пользователя
+ * TfsTestCase xxx-xxx
  */
 
 public class CreateUserPositive extends RollOutWeb {
@@ -28,16 +30,16 @@ public class CreateUserPositive extends RollOutWeb {
     public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        //Открытие
-        driver.get(URL_NSMS_SITE);
+        driver.manage().window().maximize();
+        authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
+        driver.get(URL_NSMS_USERS_TEST);
     }
 
     @Test
-    public void newUser() throws IOException, InterruptedException {
+    public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
-        driver.findElement(By.cssSelector("a.toolbar_button")).click();
+        driver.findElement(By.cssSelector(BUTTON_ADD_USER)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
         Thread.sleep(1000);
         List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
@@ -56,9 +58,9 @@ public class CreateUserPositive extends RollOutWeb {
         //Проверка email позитивные сценарии
         createUser("User" + count, "z@1", "+7"); // 1 симв
         createUser("User" + count, RandomStr.getStr(63) + "@" + "g", "+7"); //63 и 1 симв
-        createUser("User" + count, "A" + "@" + RandomStr.getStrD(252), "+7"); // 1 и 252
+        createUser("User" + count, "A" + "@" + RandomStr.getStrDomain(252), "+7"); // 1 и 252
         createUser("User" + count, "3!#$%&'*+-/=?^_`{|}@d", "+7"); // спецсимволы в локальной части
-        createUser("User" + count, (RandomStr.getStr(60) + "@" + RandomStr.getStrD(193)), "+7"); // 254 cимв
+        createUser("User" + count, (RandomStr.getStr(60) + "@" + RandomStr.getStrDomain(193)), "+7"); // 254 cимв
 
         //Проверка телефона позитивные сценарии, на текущей момент для поля нет ограничений
         createUser("User" + count, "z@1", "123"); // от трех симв
@@ -81,8 +83,8 @@ public class CreateUserPositive extends RollOutWeb {
             driver.findElement(By.cssSelector("tbody tr:first-child .checkbox")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
             driver.findElement(By.cssSelector("a.toolbar_button:nth-child(1)")).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.actions_button")));
-            driver.findElement(By.cssSelector("button.actions_button")).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
+            driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
             Thread.sleep(1000);
         } catch (Exception e) {
             System.out.println("Ошибка очистки списка");

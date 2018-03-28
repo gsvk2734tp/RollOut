@@ -37,7 +37,7 @@ public class RandomStr {
         return line;
     }
 
-    public static String getStrD(int leng) {
+    public static String getStrDomain(int leng) {
         sumb = Alf.toCharArray();
         String line = "";
         for (int i = 0; i < leng; i++) {

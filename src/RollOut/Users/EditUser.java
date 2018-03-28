@@ -7,6 +7,12 @@ import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий позитивные сценарии редактирования свойств пользователя.
+ * TfsTestCase xxx-xxx
+ */
+
 public class EditUser extends RollOutWeb {
     @Before
     public void setUp() throws InterruptedException {

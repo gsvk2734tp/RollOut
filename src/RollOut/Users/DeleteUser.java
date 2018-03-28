@@ -14,7 +14,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Удаление пользователя. Возможно стоит запускать после теста на создания пользователей
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий удаление пользователя.
+ * TfsTestCase xxx-xxx
  */
 
 public class DeleteUser extends RollOutWeb {
@@ -29,16 +31,16 @@ public class DeleteUser extends RollOutWeb {
     }
 
     @Test
-    public void deleteUsers() throws InterruptedException {
+    public void deleteUsersAndCheckVisible() throws InterruptedException {
         int number = 2;
         createUsers(number);
 
         for (int i = number-1; i >= 0; i--) {
             driver.findElement(By.xpath("//td[text()='User" + i + "']")).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".icon.icon-web-general.icons-general-delete")));
-            driver.findElement(By.cssSelector(".icon.icon-web-general.icons-general-delete")).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_USER)));
+            driver.findElement(By.cssSelector(BUTTON_DELETE_USER)).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.actions_button")));
-            driver.findElement(By.cssSelector("button.actions_button")).click();
+            driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
             Thread.sleep(1000);
             //Проверяем, что пользователь удален
             Assert.assertTrue(driver.findElements(By.xpath("//td[text()='User" + i + "']")).isEmpty());

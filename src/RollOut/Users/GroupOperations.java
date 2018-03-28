@@ -13,7 +13,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Групповые операции
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий групповые операции.
+ * TfsTestCase xxx-xxx
  */
 
 public class GroupOperations extends RollOutWeb {
@@ -30,7 +32,7 @@ public class GroupOperations extends RollOutWeb {
     }
 
     @Test
-    public void groupOper() throws InterruptedException {
+    public void checkGroupOperations() throws InterruptedException {
         //Массовое удаление
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='User1']")));
         driver.findElement(By.cssSelector("tbody tr:first-child .checkbox")).click();

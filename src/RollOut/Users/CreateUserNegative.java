@@ -1,7 +1,7 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import RollOut.RandomStr;
+import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,8 +10,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 
-import static RollOut.RollOutConstants.*;
+import static RollOut.RollOutConstants.TITLE_APP;
+import static RollOut.RollOutConstants.URL_NSMS_SITE_TEST;
+import static RollOut.RollOutConstants.URL_NSMS_USERS_TEST;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+
+/**
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий негативные сценарии создания пользователя
+ * TfsTestCase xxx-xxx
+ */
 
 public class CreateUserNegative extends RollOutWeb {
 
@@ -19,14 +27,14 @@ public class CreateUserNegative extends RollOutWeb {
     public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        //Открытие
-        driver.get(URL_NSMS_SITE);
+        driver.manage().window().maximize();
+        authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
+        driver.get(URL_NSMS_USERS_TEST);
     }
 
     @Test
-    public void newUser() throws IOException, InterruptedException {
+    public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка имени негативные сценарии
         createUserNegative("", "", ""); // все поля пустые
         createUserNegative("", "gmail@gmail.com", ""); // пустое user
@@ -46,7 +54,7 @@ public class CreateUserNegative extends RollOutWeb {
 
         createUserNegative("User", "alice" + "@", ""); // доменная 0 симв
         createUserNegative("User", "alice" + "@" + RandomStr.getStr(65), ""); // доменная более 63 без точки
-        createUserNegative("User", "1" + "@" + RandomStr.getStrD(253), ""); // более 252 симв
+        createUserNegative("User", "1" + "@" + RandomStr.getStrDomain(253), ""); // более 252 симв
 
         // Проверка на спецсимволы, запрещены в доменной части
         for (char sumb : specSumb) {

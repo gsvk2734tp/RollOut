@@ -9,7 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UserRole extends RollOutWeb {
     /**
-     * Проверка ролей. Пока что не реализована.
+     * @author Golyshkin.Dmitriy on 27.03.2018.
+     * Автотест, проверяющий роли пользователей.
+     * TfsTestCase Фича не реализована
      */
 
     @Before

@@ -10,12 +10,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Проверка авторизации
+ * @author Golyshkin.Dmitriy on 27.03.2018.
+ * Автотест, проверяющий авторизацию
+ * TfsTestCase xxx-xxx
  */
-
 
 public class AuthSislo {
     private WebDriver driver;
@@ -31,19 +33,13 @@ public class AuthSislo {
 
     @Test
     public void auth() throws InterruptedException {
-        driver.get("");
-
+        driver.get(URL_NSMS_SITE_TEST);
         //Редирект на страницу аутентификации
-        wait.until(titleIs("Silso"));
-        driver.findElement(By.id("UserName")).sendKeys("admin");
-        driver.findElement(By.id("Password")).sendKeys("123123123");
-        driver.findElement(By.cssSelector("button.btn-login")).click();
-
-        //Ждем редиректа
-        wait.until(titleIs("Rollout.WebApplication"));
-        //Кастыль из-за необходимости обновлять страницу после входа
-        Thread.sleep(2000);
-        driver.get("http://rollout-test.nsms.site/organizations");
+        wait.until(titleIs(TITLE_SILSO));
+        driver.findElement(By.id("UserName")).sendKeys(LOGIN);
+        driver.findElement(By.id("Password")).sendKeys(PASSWORD);
+        driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
+        wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }
 
