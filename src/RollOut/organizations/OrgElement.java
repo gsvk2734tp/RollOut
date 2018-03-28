@@ -14,10 +14,11 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * @author Golyshkin.Dmitriy on 27.03.2018.
- * Автотест, проверяющий видимость элементов и корректность текстовок на вкладке Организации
- * TfsTestCase xxx-xxx
+ * Проверка видимости элементов на странице Организации
  */
+
+//TODO: Проверить видимость элементов боковой панели
+//TODO: Проверка видимость элементов на верхней панели
 
 public class OrgElement extends RollOutWeb {
     private Actions actions;
@@ -27,9 +28,6 @@ public class OrgElement extends RollOutWeb {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
         actions = new Actions(driver);
-        driver.manage().window().maximize();
-        authSilso(URL_NSMS_SITE_TEST);
-        wait.until(titleIs(TITLE_APP));
     }
 
     @Test
@@ -60,21 +58,18 @@ public class OrgElement extends RollOutWeb {
 
         //Проверка невидимого элемента Удалить
         Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).isEnabled());
-        //Проверка элементов в карточке Организации
+        //Проверка элементов в карточке подтверждения удаления организации
         actions.moveToElement(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)));
         driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).click();
         driver.findElement(By.xpath("//div[contains(text(),'Удаление организации')]"));
-
-
+        driver.findElement(By.xpath("//div[contains(text(),'Подтвердите удаление \"Ромашка\".')]"));
+        driver.findElement(By.xpath("//div[contains(text(),'URI префикс для авторизации пользователей:')]"));
+        driver.findElement(By.cssSelector(BUTTON_CANCEL_ORG)).click();
 
         //Проверка лого
         driver.findElement(By.className("brand_logo"));
         driver.findElement(By.xpath("//span[text()='ViPNet']"));
         driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
-
-        //Проверка боковой панели
-
-        //Проверка шапки
     }
 
     @After
