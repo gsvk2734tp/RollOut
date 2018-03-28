@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static RollOut.RollOutConstants.BUTTON_ADD_USER;
-import static RollOut.RollOutConstants.BUTTON_SAVE_USER;
+import static RollOut.RollOutConstants.*;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public abstract class RollOutWeb {
     public WebDriver driver;
@@ -101,6 +101,16 @@ public abstract class RollOutWeb {
         //Проверка, что кнопка Сохранить не доступна.
         Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
         //Проверка, что появилась ошибка. Ошибка еще не реализована
+    }
+    public void authSilso(String site) {
+            driver.get(site);
+            //Редирект на страницу аутентификации
+            wait.until(titleIs(TITLE_SILSO));
+            driver.findElement(By.id("UserName")).sendKeys(LOGIN);
+            driver.findElement(By.id("Password")).sendKeys(PASSWORD);
+            driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
+            wait.until(titleIs(TITLE_APP));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }
 
 }

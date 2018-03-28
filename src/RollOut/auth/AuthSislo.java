@@ -34,14 +34,11 @@ public class AuthSislo {
     @Test
     public void auth() throws InterruptedException {
         driver.get(URL_NSMS_SITE_TEST);
-
         //Редирект на страницу аутентификации
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.id("UserName")).sendKeys(LOGIN);
         driver.findElement(By.id("Password")).sendKeys(PASSWORD);
         driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
-
-        //Ждем редиректа
         wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }

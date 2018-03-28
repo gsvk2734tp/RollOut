@@ -30,16 +30,16 @@ public class CreateUserPositive extends RollOutWeb {
     public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        //Открытие
-        driver.get(URL_NSMS_SITE);
+        driver.manage().window().maximize();
+        authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
+        driver.get(URL_NSMS_USERS_TEST);
     }
 
     @Test
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
-        driver.findElement(By.cssSelector("a.toolbar_button")).click();
+        driver.findElement(By.cssSelector(BUTTON_ADD_USER)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
         Thread.sleep(1000);
         List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));

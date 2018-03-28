@@ -1,7 +1,7 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import RollOut.RandomStr;
+import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 
-import static RollOut.RollOutConstants.*;
+import static RollOut.RollOutConstants.TITLE_APP;
+import static RollOut.RollOutConstants.URL_NSMS_SITE_TEST;
+import static RollOut.RollOutConstants.URL_NSMS_USERS_TEST;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
@@ -25,10 +27,10 @@ public class CreateUserNegative extends RollOutWeb {
     public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        //Открытие
-        driver.get(URL_NSMS_SITE);
+        driver.manage().window().maximize();
+        authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
+        driver.get(URL_NSMS_USERS_TEST);
     }
 
     @Test
