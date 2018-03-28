@@ -17,4 +17,8 @@ public class RollOutConstants {
     public static final String BUTTON_SAVE_USER = "button:nth-child(1)";
     public static final String BUTTON_DELETE_USER = ".icon.icon-web-general.icons-general-delete";
     public static final String BUTTON_DELETE_YES_USER = "button.actions_button:nth-child(1)";
+
+    public static final String BUTTON_EDIT_ORG = "tr:nth-child(2) i.table_edit-row-icon";
+    public static final String BUTTON_DELETE_ORG = "tr:nth-child(2) i.table_delete-row-icon";
+    public static final String BUTTON_CANCEL_ORG = "button:nth-child(2)";
 }

@@ -23,13 +23,11 @@ public class AuthSislo {
     private WebDriver driver;
     private WebDriverWait wait;
 
-
     @Before
     public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
     }
-
 
     @Test
     public void auth() throws InterruptedException {

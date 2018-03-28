@@ -39,7 +39,7 @@ public class DeleteUser extends RollOutWeb {
             driver.findElement(By.xpath("//td[text()='User" + i + "']")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_USER)));
             driver.findElement(By.cssSelector(BUTTON_DELETE_USER)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.actions_button")));
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
             driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
             Thread.sleep(1000);
             //Проверяем, что пользователь удален

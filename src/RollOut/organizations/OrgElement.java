@@ -1,11 +1,11 @@
 package RollOut.organizations;
 
+import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,9 +19,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * TfsTestCase xxx-xxx
  */
 
-public class OrgElement {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class OrgElement extends RollOutWeb {
     private Actions actions;
 
     @Before
@@ -29,6 +27,9 @@ public class OrgElement {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
         actions = new Actions(driver);
+        driver.manage().window().maximize();
+        authSilso(URL_NSMS_SITE_TEST);
+        wait.until(titleIs(TITLE_APP));
     }
 
     @Test
@@ -48,16 +49,23 @@ public class OrgElement {
         driver.findElement(By.cssSelector("td.organization-list_first-column")).click();
 
         //Проверка невидимого элемента Редактировать у первой в списке Орг
-        Assert.assertTrue(driver.findElement(By.cssSelector("tr:nth-child(2) i.table_edit-row-icon")).isEnabled());
+        Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).isEnabled());
         //Проверка элементов в карточке Организации
-        actions.moveToElement(driver.findElement(By.cssSelector("tr:nth-child(2) i.table_edit-row-icon")));
-        driver.findElement(By.cssSelector("tr:nth-child(2) i.table_edit-row-icon")).click();
+        actions.moveToElement(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)));
+        driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).click();
         driver.findElement(By.xpath("//div[contains(text(),'Данные организации в Rollout Center')]"));
         driver.findElement(By.xpath("//div[contains(text(),'Название:')]"));
         driver.findElement(By.xpath("//div[contains(text(),'URI префикс для авторизации пользователей:')]"));
-        driver.findElement(By.cssSelector("button:nth-child(2)")).click();
+        driver.findElement(By.cssSelector(BUTTON_CANCEL_ORG)).click();
 
         //Проверка невидимого элемента Удалить
+        Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).isEnabled());
+        //Проверка элементов в карточке Организации
+        actions.moveToElement(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)));
+        driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).click();
+        driver.findElement(By.xpath("//div[contains(text(),'Удаление организации')]"));
+
+
 
         //Проверка лого
         driver.findElement(By.className("brand_logo"));
