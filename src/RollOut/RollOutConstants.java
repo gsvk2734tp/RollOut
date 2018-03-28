@@ -5,8 +5,8 @@ public class RollOutConstants {
     public static final String URL_NSMS_USERS = "http://rollout.nsms.site/users";
     public static final String URL_NSMS_SITE_TEST = "http://rollout-test.nsms.site";
     public static final String URL_NSMS_USERS_TEST = "http://rollout-test.nsms.site/users";
-    public static final String LOGIN = "admin";
-    public static final String PASSWORD = "123123123";
+    public static final String LOGIN = "alice";
+    public static final String PASSWORD = "P@ssw0rd";
 
     public static final String TITLE_APP = "Rollout.WebApplication";
     public static final String TITLE_SILSO = "Silso";
