@@ -25,13 +25,15 @@ public class DeleteUser extends RollOutWeb {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
         authSilso(URL_NSMS_SITE_TEST);
+        driver.manage().window().maximize();
         wait.until(titleIs(TITLE_APP));
         driver.get(URL_NSMS_USERS_TEST);
     }
 
     @Test
     public void deleteUsersAndCheckVisible() throws InterruptedException {
-        int number = 2;
+        int number = 15;
+        Thread.sleep(1000);
         createUsers(number);
 
         for (int i = number - 1; i >= 0; i--) {

@@ -21,6 +21,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * TfsTestCase xxx-xxx
  */
 
+//TODO Тест не доделан, нужно отредактировать
+
 public class CreateMoreUsers extends RollOutWeb {
 
     @Before

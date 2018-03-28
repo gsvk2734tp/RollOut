@@ -19,6 +19,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * TfsTestCase xxx-xxx
  */
 
+//TODO Тест не сделан, будет доработан после интеграции с NSMS
+
 public class AuthSislo extends RollOutWeb {
 
 
@@ -26,6 +28,7 @@ public class AuthSislo extends RollOutWeb {
     public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
+
     }
 
 

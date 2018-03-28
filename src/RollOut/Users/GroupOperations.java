@@ -35,11 +35,11 @@ public class GroupOperations extends RollOutWeb {
     public void checkGroupOperations() throws InterruptedException {
         //Массовое удаление
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='User1']")));
-        driver.findElement(By.cssSelector("tbody tr:first-child .checkbox")).click();
+        driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
         driver.findElement(By.cssSelector("a.toolbar_button:nth-child(1)")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.actions_button")));
-        driver.findElement(By.cssSelector("button.actions_button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
+        driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
         Thread.sleep(1000);
     }
 
