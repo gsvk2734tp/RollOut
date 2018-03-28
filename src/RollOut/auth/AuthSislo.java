@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
@@ -32,19 +33,16 @@ public class AuthSislo {
 
     @Test
     public void auth() throws InterruptedException {
-        driver.get("");
+        driver.get(URL_NSMS_SITE_TEST);
 
         //Редирект на страницу аутентификации
-        wait.until(titleIs("Silso"));
-        driver.findElement(By.id("UserName")).sendKeys("admin");
-        driver.findElement(By.id("Password")).sendKeys("123123123");
-        driver.findElement(By.cssSelector("button.btn-login")).click();
+        wait.until(titleIs(TITLE_SILSO));
+        driver.findElement(By.id("UserName")).sendKeys(LOGIN);
+        driver.findElement(By.id("Password")).sendKeys(PASSWORD);
+        driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
 
         //Ждем редиректа
-        wait.until(titleIs("Rollout.WebApplication"));
-        //Кастыль из-за необходимости обновлять страницу после входа
-        Thread.sleep(2000);
-        driver.get("http://rollout-test.nsms.site/organizations");
+        wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }
 
