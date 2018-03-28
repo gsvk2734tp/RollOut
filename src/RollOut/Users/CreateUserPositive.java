@@ -39,6 +39,7 @@ public class CreateUserPositive extends RollOutWeb {
     @Test
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
+        Thread.sleep(1000); // Пропуск анимации
         driver.findElement(By.cssSelector(BUTTON_ADD_USER)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
         Thread.sleep(1000);
@@ -80,7 +81,7 @@ public class CreateUserPositive extends RollOutWeb {
         //Очистка списка
         try {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='a']")));
-            driver.findElement(By.cssSelector("tbody tr:first-child .checkbox")).click();
+            driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
             driver.findElement(By.cssSelector("a.toolbar_button:nth-child(1)")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));

@@ -31,11 +31,13 @@ public class CreateUserNegative extends RollOutWeb {
         authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
         driver.get(URL_NSMS_USERS_TEST);
+
     }
 
     @Test
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка имени негативные сценарии
+        Thread.sleep(1000); //Пропуск анимации
         createUserNegative("", "", ""); // все поля пустые
         createUserNegative("", "gmail@gmail.com", ""); // пустое user
         createUserNegative("", "gmail@gmail.com", "");
