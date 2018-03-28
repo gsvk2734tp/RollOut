@@ -24,10 +24,9 @@ public class DeleteUser extends RollOutWeb {
     public void setUp() throws InterruptedException {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        //Открытие
-        driver.get(URL_NSMS_SITE);
+        authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
+        driver.get(URL_NSMS_USERS_TEST);
     }
 
     @Test
@@ -35,7 +34,7 @@ public class DeleteUser extends RollOutWeb {
         int number = 2;
         createUsers(number);
 
-        for (int i = number-1; i >= 0; i--) {
+        for (int i = number - 1; i >= 0; i--) {
             driver.findElement(By.xpath("//td[text()='User" + i + "']")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_USER)));
             driver.findElement(By.cssSelector(BUTTON_DELETE_USER)).click();

@@ -102,15 +102,16 @@ public abstract class RollOutWeb {
         Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
         //Проверка, что появилась ошибка. Ошибка еще не реализована
     }
+
     public void authSilso(String site) {
-            driver.get(site);
-            //Редирект на страницу аутентификации
-            wait.until(titleIs(TITLE_SILSO));
-            driver.findElement(By.id("UserName")).sendKeys(LOGIN);
-            driver.findElement(By.id("Password")).sendKeys(PASSWORD);
-            driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
-            wait.until(titleIs(TITLE_APP));
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
+        driver.get(site);
+        //Редирект на страницу аутентификации
+        wait.until(titleIs(TITLE_SILSO));
+        driver.findElement(By.id("UserName")).sendKeys(LOGIN);
+        driver.findElement(By.id("Password")).sendKeys(PASSWORD);
+        driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
+        wait.until(titleIs(TITLE_APP));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }
 
 }
