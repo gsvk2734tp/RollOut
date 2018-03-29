@@ -117,6 +117,34 @@ public abstract class RollOutWeb {
         }
     }
 
+    public void editUserPositive(String name, String email, String phone, String about) throws InterruptedException {
+        driver.findElement(By.xpath("//td[text()='User" + (count - 1) + "']")).click();
+        Thread.sleep(1000);
+        List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
+        if (name != null) {
+            elements.get(0).clear();
+            elements.get(0).sendKeys(name);
+        }
+        if (email != null) {
+            elements.get(1).clear();
+            elements.get(1).sendKeys(email);
+        }
+        if (phone != null) {
+            elements.get(2).clear();
+            elements.get(2).sendKeys(phone);
+        }
+        if (about != null) {
+            driver.findElement(By.cssSelector("textarea")).clear();
+            driver.findElement(By.cssSelector("textarea")).sendKeys(about);
+        }
+        driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).click();
+        Thread.sleep(1000);
+        if (name != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + name + "']")));
+        if (email != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + email + "']")));
+        if (phone != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + phone + "']")));
+        count--;
+    }
+
     public void authSilso(String site) {
         driver.get(site);
         //Редирект на страницу аутентификации
