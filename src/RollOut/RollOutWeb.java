@@ -14,6 +14,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public abstract class RollOutWeb {
     public WebDriver driver;
+    public WebDriver firefoxDriver;
     public WebDriverWait wait;
     public int count = 0;
     public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
@@ -155,6 +156,32 @@ public abstract class RollOutWeb {
         driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
         wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
+    }
+    public void editUserNegative(String name, String email, String phone, String about) throws InterruptedException {
+        if (count % 2 == 0) driver.findElement(By.xpath("//td[text()='User0']")).click();
+        else driver.findElement(By.xpath("//td[text()='User1']")).click();
+        Thread.sleep(1000);
+        List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
+        if (name != null) {
+            elements.get(0).clear();
+            elements.get(0).sendKeys(name);
+        }
+        if (email != null) {
+            elements.get(1).clear();
+            elements.get(1).sendKeys(email);
+        }
+        if (phone != null) {
+            elements.get(2).clear();
+            elements.get(2).sendKeys(phone);
+        }
+        if (about != null) {
+            driver.findElement(By.cssSelector("textarea")).clear();
+            driver.findElement(By.cssSelector("textarea")).sendKeys(about);
+        }
+        Thread.sleep(500);
+        Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
+        Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_USER)).isEnabled());
+        count++;
     }
 
 }
