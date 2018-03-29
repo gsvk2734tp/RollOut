@@ -51,9 +51,9 @@ public class CreateUserPositive extends RollOutWeb {
         System.out.println("Элементы пустые");
 
         //Проверка имени позитивные сценарии
-        createUser("1", "gmail@gmail.com", "+792423154131"); // 1 символ в имени
-        createUser("a", "gmail@gmail.com", "+792423154131");// 1 буква в имени
-        createUser(RandomStr.getStr(128), "gmail@gmail.com", "+792423154131"); //128 символов
+        createUser("1", "alice@gmail.com", "+792423154131"); // 1 символ в имени
+        createUser("a", "alice@gmail.com", "+792423154131");// 1 буква в имени
+        createUser(RandomStr.getStr(128), "alice@gmail.com", "+792423154131"); //128 символов
         //createUser("a", "gmail@gmail.com", "+792423154131"); // имена не уникальны, баг
 
         //Проверка email позитивные сценарии
@@ -68,7 +68,7 @@ public class CreateUserPositive extends RollOutWeb {
         createUser("User" + count, "z@1", "+000"); // + вначале
         createUser("User" + count, "z@1", "987654321099999"); // 15 символов
         createUser("User" + count, "z@1", "+987654321099999"); // 15 символов и +
-        createUser("User" + count, "gmail@gmail.com", "   +7123456789 "); //15 симв с пробелами
+        createUser("User" + count, "alice@gmail.com", "   +7123456789 "); //15 симв с пробелами
 
         //Проверка Описание позитивные сценарии
         createUser("User" + count, "z@1", "+7", "."); // 1 симв

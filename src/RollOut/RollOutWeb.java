@@ -28,7 +28,8 @@ public abstract class RollOutWeb {
             List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
             elements.get(0).sendKeys("User" + count);
             elements.get(1).sendKeys("q@q");
-            elements.get(2).sendKeys();
+            elements.get(2).sendKeys("+7925");
+            driver.findElement(By.cssSelector("textarea")).sendKeys("123qwe");
             driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='User" + count + "']")));
             count++;
