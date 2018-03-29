@@ -78,22 +78,9 @@ public class CreateUserPositive extends RollOutWeb {
 
     @After
     public void tearDown() {
-        //Очистка списка
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='a']")));
-            driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
-            driver.findElement(By.cssSelector("a.toolbar_button:nth-child(1)")).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
-            driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            System.out.println("Ошибка очистки списка");
-        } finally {
-            //Выгрузка браузера
-            driver.quit();
-            driver = null;
-        }
+        deleteAllUsers();
+        driver.quit();
+        driver = null;
     }
 }
 

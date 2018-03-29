@@ -83,10 +83,9 @@ public abstract class RollOutWeb {
         elements.get(0).sendKeys(userName);
         elements.get(1).sendKeys(email);
         elements.get(2).sendKeys(mobile);
-        //Проверка, что кнопка Сохранить не доступна.
+        //Проверка, что кнопка Сохранить не доступна. Присутствует сообщение об ошибке
         Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
-        //Проверка, что появилась ошибка. Нужно подумать, как лучше проверять
-
+        Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_USER)).isEnabled());
     }
 
     public void createUserNegative(String userName, String email, String mobile, String about) throws InterruptedException {
@@ -99,9 +98,23 @@ public abstract class RollOutWeb {
         elements.get(1).sendKeys(email);
         elements.get(2).sendKeys(mobile);
         driver.findElement(By.cssSelector("textarea")).sendKeys(about); //Описание
-        //Проверка, что кнопка Сохранить не доступна.
+        //Проверка, что кнопка Сохранить не доступна. Присутствует сообщение об ошибке
         Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
-        //Проверка, что появилась ошибка. Ошибка еще не реализована
+        Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_USER)).isEnabled());
+    }
+
+    public void deleteAllUsers() {
+        try {
+            //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='a']")));
+            driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
+            driver.findElement(By.cssSelector("a.toolbar_button:nth-child(1)")).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
+            driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("Ошибка очистки списка");
+        }
     }
 
     public void authSilso(String site) {

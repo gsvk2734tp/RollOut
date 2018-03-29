@@ -22,4 +22,5 @@ public class RollOutConstants {
     public static final String BUTTON_CANCEL_ORG = "button:nth-child(2)";
     public static final String BUTTON_DELETE_ORG = "tr:nth-child(2) i.table_delete-row-icon";
     public static final String CHECKBOX_SELECTALL_USERS = "th.user-list_first-column.table_header";
+    public static final String FIELD_ERROR_USER = ".form_field-error";
 }
