@@ -5,10 +5,17 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -20,15 +27,26 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 //TODO: Проверить видимость элементов боковой панели
 //TODO: Проверка видимость элементов на верхней панели
 
+@RunWith(value = Parameterized.class)
 public class OrgElement extends RollOutWeb {
     private Actions actions;
 
+    public OrgElement(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, 10);
+        driver.manage().window().maximize();
+    }
+
+    @Parameterized.Parameters
+    public static List<Object> data() {
+        Object[] data = new Object[]{new ChromeDriver(), new EdgeDriver()}; // new FirefoxDriver() - не работает
+        return Arrays.asList(data);
+    }
+
+
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
         actions = new Actions(driver);
-        driver.manage().window().maximize();
         authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
     }

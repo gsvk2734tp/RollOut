@@ -4,10 +4,17 @@ import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -18,13 +25,23 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * TfsTestCase xxx-xxx
  */
 
+@RunWith(value = Parameterized.class)
 public class GroupOperations extends RollOutWeb {
+
+    public GroupOperations(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, 10);
+        driver.manage().window().maximize();
+    }
+
+    @Parameterized.Parameters
+    public static List<Object> data() {
+        Object[] data = new Object[]{new ChromeDriver(), new EdgeDriver()}; // new FirefoxDriver() - не работает
+        return Arrays.asList(data);
+    }
 
     @Before
     public void setUp() throws InterruptedException {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-        //Открытие
         driver.get(URL_NSMS_SITE);
         wait.until(titleIs(TITLE_APP));
         driver.get(URL_NSMS_USERS);

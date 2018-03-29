@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -35,14 +36,14 @@ public class EditUserNegative extends RollOutWeb {
 
     @Parameterized.Parameters
     public static List<Object> data() {
-        Object[] data = new Object[]{ new FirefoxDriver(), new EdgeDriver()};
+        Object[] data = new Object[]{new ChromeDriver(), new EdgeDriver(), new FirefoxDriver()};
         return Arrays.asList(data);
     }
 
 
     @Before
     public void setUp() throws InterruptedException {
-        driver.get(URL_NSMS_SITE);
+        driver.get(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
         driver.get(URL_NSMS_USERS);
     }
