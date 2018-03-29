@@ -17,6 +17,7 @@ public abstract class RollOutWeb {
     public WebDriverWait wait;
     public int count = 0;
     public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
+    public char[] specSumbUserName = {'\\', '/', ':', '*', '?', '"', '<', '>', '|'};
 
 
     public void createUsers(int number) throws InterruptedException {

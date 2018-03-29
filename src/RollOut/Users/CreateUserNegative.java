@@ -40,22 +40,22 @@ public class CreateUserNegative extends RollOutWeb {
         Thread.sleep(1000); //Пропуск анимации
         createUserNegative("", "", ""); // все поля пустые
         createUserNegative("", "gmail@gmail.com", ""); // пустое user
-        createUserNegative("", "gmail@gmail.com", "");
-        // createUser(" \\ / : * ? \" < > | ", "gmail@gmail.com", ""); // спецсимволы, баг
-        createUserNegative(RandomStr.getStr(129), "gmail@gmail.com", "");
-        createUserNegative(RandomStr.getStr(257), "gmail@gmail.com", "");
+        /* Проверка на спецсимволы в имени, запрещены, пока что баг
+        for (char sumb : specSumbUserName) {
+            createUser(specSumb, "gmail@gmail.com", "");
+        } */
+        createUserNegative(RandomStr.getStr(129), "gmail@gmail.com", ""); //имя 129
+        createUserNegative(RandomStr.getStr(257), "gmail@gmail.com", ""); //имя 257
 
         //Проверка email негативные
         createUserNegative("User", "@" + "gmail.com", ""); // локальная 0 симв
         //createUser("User", RandomStr.getStr(64) + "@" + "gmail.com", ""); // локальная 64 симв, баг
-
         /* Проверка на спецсимволы в локальной части, запрещены вначале в локальной части, пока что баг
         for (char sumb : specSumb) {
             createUser("User", sumb + "@" + RandomStr.getStr(3), "");
         } */
-
         createUserNegative("User", "alice" + "@", ""); // доменная 0 симв
-        createUserNegative("User", "alice" + "@" + RandomStr.getStr(65), ""); // доменная более 63 без точки
+        createUserNegative("User", "alice" + "@" + RandomStr.getStr(64), ""); // доменная более 63 без точки
         createUserNegative("User", "1" + "@" + RandomStr.getStrDomain(253), ""); // более 252 симв
 
         // Проверка на спецсимволы, запрещены в доменной части

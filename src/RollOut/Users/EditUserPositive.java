@@ -31,7 +31,7 @@ public class EditUserPositive extends RollOutWeb {
 
     @Test
     public void editUsers() throws InterruptedException {
-        int number = 14;
+        int number = 15;
         Thread.sleep(3000);
         createUsers(number);
         editUserPositive("1", null, null, null); // 1 0 0 0
@@ -50,6 +50,7 @@ public class EditUserPositive extends RollOutWeb {
         editUserPositive("qwe3", null, "721", "qwe"); // 1 0 1 1
         editUserPositive("a", "alice@d", null, "qwe"); // 1 1 0 1
         editUserPositive(null, "z@1", "+721", "qwe"); // 0 1 1 1
+        editUserPositive("qwe4", "z@1", "+721", "qwe"); // 1 1 1 1
     }
 
     @After
