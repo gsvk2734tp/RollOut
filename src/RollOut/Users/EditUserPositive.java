@@ -10,6 +10,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class EditUserPositive extends RollOutWeb {
 
     @Parameterized.Parameters
     public static List<Object> data() {
-        Object[] data = new Object[]{new ChromeDriver(), new EdgeDriver()}; // new FirefoxDriver() - не работает
+        Object[] data = new Object[]{new FirefoxDriver(), new ChromeDriver(), new EdgeDriver()};
         return Arrays.asList(data);
     }
 

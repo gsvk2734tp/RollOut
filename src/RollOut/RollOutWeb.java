@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,6 +17,12 @@ public abstract class RollOutWeb {
     public WebDriver driver;
     public WebDriver firefoxDriver;
     public WebDriverWait wait;
+    public static OperaOptions options = new OperaOptions();
+    {
+        options.setBinary("C:\\Program Files\\Opera\\52.0.2871.40\\opera.exe");
+    }
+
+
     public int count = 0;
     public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
     public char[] specSumbUserName = {'\\', '/', ':', '*', '?', '"', '<', '>', '|'};
