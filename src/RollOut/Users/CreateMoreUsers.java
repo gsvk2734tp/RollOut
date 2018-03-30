@@ -4,7 +4,10 @@ import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,7 +26,12 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 //TODO Тест не доделан, нужно отредактировать
 
+@RunWith(value = Parameterized.class)
 public class CreateMoreUsers extends RollOutWeb {
+
+    public CreateMoreUsers(WebDriver driver) {
+        super(driver);
+    }
 
     @Before
     public void setUp() throws InterruptedException {

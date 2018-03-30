@@ -8,13 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -27,16 +20,9 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 @RunWith(value = Parameterized.class)
 public class EditUserPositive extends RollOutWeb {
-    public EditUserPositive(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().window().maximize();
-    }
 
-    @Parameterized.Parameters
-    public static List<Object> data() {
-        Object[] data = new Object[]{new FirefoxDriver(), new ChromeDriver(), new EdgeDriver()};
-        return Arrays.asList(data);
+    public EditUserPositive(WebDriver driver) {
+        super(driver);
     }
 
     @Before

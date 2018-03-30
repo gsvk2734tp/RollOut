@@ -5,10 +5,11 @@ import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -21,14 +22,14 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 //TODO Тест не сделан, будет доработан после интеграции с NSMS
 
+@RunWith(value = Parameterized.class)
 public class AuthSislo extends RollOutWeb {
-
+    public AuthSislo(WebDriver driver) {
+        super(driver);
+    }
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-
     }
 
 

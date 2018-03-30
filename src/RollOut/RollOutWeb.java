@@ -1,13 +1,19 @@
 package RollOut;
 
 import org.junit.Assert;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static RollOut.RollOutConstants.*;
@@ -18,14 +24,16 @@ public abstract class RollOutWeb {
     public WebDriver firefoxDriver;
     public WebDriverWait wait;
     public static OperaOptions options = new OperaOptions();
-    {
-        options.setBinary("C:\\Program Files\\Opera\\52.0.2871.40\\opera.exe");
-    }
-
-
     public int count = 0;
     public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
     public char[] specSumbUserName = {'\\', '/', ':', '*', '?', '"', '<', '>', '|'};
+
+    @Parameterized.Parameters
+    public static List<Object> data() {
+        options.setBinary("C:\\Program Files\\Opera\\52.0.2871.40\\opera.exe");
+        Object[] data = new Object[]{new OperaDriver(options), new FirefoxDriver(), new ChromeDriver(), new EdgeDriver()};
+        return Arrays.asList(data);
+    }
 
 
     public void createUsers(int number) throws InterruptedException {
@@ -149,8 +157,10 @@ public abstract class RollOutWeb {
         driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).click();
         Thread.sleep(1000);
         if (name != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + name + "']")));
-        if (email != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + email + "']")));
-        if (phone != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + phone + "']")));
+        if (email != null)
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + email + "']")));
+        if (phone != null)
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + phone + "']")));
         count--;
     }
 
@@ -164,6 +174,7 @@ public abstract class RollOutWeb {
         wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }
+
     public void editUserNegative(String name, String email, String phone, String about) throws InterruptedException {
         if (count % 2 == 0) driver.findElement(By.xpath("//td[text()='User0']")).click();
         else driver.findElement(By.xpath("//td[text()='User1']")).click();
@@ -189,6 +200,11 @@ public abstract class RollOutWeb {
         Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
         Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_USER)).isEnabled());
         count++;
+    }
+    public RollOutWeb(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, 10);
+        driver.manage().window().maximize();
     }
 
 }

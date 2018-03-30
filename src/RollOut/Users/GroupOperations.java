@@ -8,13 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -27,17 +21,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 @RunWith(value = Parameterized.class)
 public class GroupOperations extends RollOutWeb {
-
     public GroupOperations(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().window().maximize();
-    }
-
-    @Parameterized.Parameters
-    public static List<Object> data() {
-        Object[] data = new Object[]{new ChromeDriver(), new EdgeDriver()}; // new FirefoxDriver() - не работает
-        return Arrays.asList(data);
+        super(driver);
     }
 
     @Before
