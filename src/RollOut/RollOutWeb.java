@@ -17,6 +17,11 @@ import java.util.List;
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
+/**
+ * @author Golyshkin.Dmitriy on 28.03.2018.
+ * Главный класс в RollOut
+ */
+
 public abstract class RollOutWeb {
     public WebDriver driver;
     public WebDriver firefoxDriver;
@@ -25,10 +30,11 @@ public abstract class RollOutWeb {
     public int count = 0;
     public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
     public char[] specSumbUserName = {'\\', '/', ':', '*', '?', '"', '<', '>', '|'};
+    public static String operaPath = "C:\\Program Files\\Opera\\52.0.2871.40\\opera.exe";
 
     @Parameterized.Parameters
     public static List<Object> data() {
-        options.setBinary("C:\\Program Files\\Opera\\52.0.2871.40\\opera.exe");
+        options.setBinary(operaPath);
         Object[] data = new Object[]{new OperaDriver(options), new FirefoxDriver(), new ChromeDriver(), new EdgeDriver()};
         return Arrays.asList(data);
     }

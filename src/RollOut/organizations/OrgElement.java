@@ -15,7 +15,9 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * Проверка видимости элементов на странице Организации
+ * @author Golyshkin.Dmitriy on 28.03.2018.
+ * Автотест, проверяющий видимость элементов на странице с Организациями
+ * TfsTestCase xxx-xxx
  */
 
 //TODO: Проверить видимость элементов боковой панели

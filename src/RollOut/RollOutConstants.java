@@ -1,5 +1,10 @@
 package RollOut;
 
+/**
+ * @author Golyshkin.Dmitriy on 28.03.2018.
+ * Класс с константами для RollOut
+ */
+
 public class RollOutConstants {
     public static final String URL_NSMS_SITE = "http://rollout.nsms.site/organizations";
     public static final String URL_NSMS_USERS = "http://rollout.nsms.site/users";

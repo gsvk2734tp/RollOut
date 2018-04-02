@@ -11,10 +11,18 @@ import java.util.List;
 
 import static RollOut.RollOutConstants.*;
 
+/**
+ * @author Golyshkin.Dmitriy on 28.03.2018.
+ * Автотест, проверяющий видимость элементов на странице с Организациями
+ * TfsTestCase xxx-xxx
+ */
+
 public abstract class RollOutUsers extends RollOutWeb {
+
     public RollOutUsers(WebDriver driver) {
         super(driver);
     }
+
     public void createUsers(int number) throws InterruptedException {
         //Открытие карточки для создания пользователя
         for (int i = 0; i < number; i++) {
@@ -141,6 +149,7 @@ public abstract class RollOutUsers extends RollOutWeb {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + phone + "']")));
         count--;
     }
+
     public void editUserNegative(String name, String email, String phone, String about) throws InterruptedException {
         if (count % 2 == 0) driver.findElement(By.xpath("//td[text()='User0']")).click();
         else driver.findElement(By.xpath("//td[text()='User1']")).click();

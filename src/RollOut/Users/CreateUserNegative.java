@@ -14,10 +14,11 @@ import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * @author Golyshkin.Dmitriy on 27.03.2018.
- * Автотест, проверяющий негативные сценарии создания пользователя
+ * @author Golyshkin.Dmitriy on 02.04.2018.
+ * Класс, содержащий методы для тестирования пользователей
  * TfsTestCase xxx-xxx
  */
+
 @RunWith(value = Parameterized.class)
 public class CreateUserNegative extends RollOutUsers {
 

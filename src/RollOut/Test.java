@@ -1,5 +1,6 @@
-package RollOut.Users;
+package RollOut;
 
+import RollOut.Users.RollOutUsers;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
