@@ -1,7 +1,6 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,7 +25,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class CreateUserPositive extends RollOutWeb {
+public class CreateUserPositive extends RollOutUsers {
 
     public CreateUserPositive(WebDriver driver) {
         super(driver);
@@ -63,7 +62,7 @@ public class CreateUserPositive extends RollOutWeb {
         createUser("User" + count, "z@1", "+7"); // 1 симв
         createUser("User" + count, RandomStr.getStr(63) + "@" + "g", "+7"); //63 и 1 симв
         createUser("User" + count, "A" + "@" + RandomStr.getStrDomain(252), "+7"); // 1 и 252
-        createUser("User" + count, "3!#$%&'*+-/=?^_`{|}@d", "+7"); // спецсимволы в локальной части
+        createUser("User" + count, "3" + SPEC_SYMBOLS + "@d", "+7"); // спецсимволы в локальной части
         createUser("User" + count, (RandomStr.getStr(60) + "@" + RandomStr.getStrDomain(193)), "+7"); // 254 cимв
 
         //Проверка телефона позитивные сценарии, на текущей момент для поля нет ограничений
@@ -75,7 +74,7 @@ public class CreateUserPositive extends RollOutWeb {
 
         //Проверка Описание позитивные сценарии
         createUser("User" + count, "z@1", "+7", "."); // 1 симв
-        createUser("User" + count, "z@1", "+7", "!#$%&'*+-/=?^_`{|}"); // спецсимволы
+        createUser("User" + count, "z@1", "+7", SPEC_SYMBOLS); // спецсимволы
         createUser("User" + count, "z@1", "+7", RandomStr.getStr(128)); // 128 симв
     }
 

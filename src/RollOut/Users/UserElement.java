@@ -1,6 +1,5 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +18,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class UserElement extends RollOutWeb {
+public class UserElement extends RollOutUsers {
 
     public UserElement(WebDriver driver) {
         super(driver);

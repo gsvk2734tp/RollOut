@@ -1,6 +1,6 @@
 package RollOut.organizations;
 
-import RollOut.RollOutWeb;
+import RollOut.Users.RollOutUsers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,7 +22,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 //TODO: Проверка видимость элементов на верхней панели
 
 @RunWith(value = Parameterized.class)
-public class OrgElement extends RollOutWeb {
+public class OrgElement extends RollOutUsers {
     private Actions actions;
 
     public OrgElement(WebDriver driver) {

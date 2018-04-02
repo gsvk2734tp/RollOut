@@ -1,6 +1,6 @@
 package RollOut.auth;
 
-import RollOut.RollOutWeb;
+import RollOut.Users.RollOutUsers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class AuthElement extends RollOutWeb {
+public class AuthElement extends RollOutUsers {
     public AuthElement(WebDriver driver) {
         super(driver);
     }

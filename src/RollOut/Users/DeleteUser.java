@@ -1,6 +1,5 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,7 +20,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class DeleteUser extends RollOutWeb {
+public class DeleteUser extends RollOutUsers {
 
     public DeleteUser(WebDriver driver) {
         super(driver);

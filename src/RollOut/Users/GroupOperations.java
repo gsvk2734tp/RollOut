@@ -1,6 +1,5 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +19,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class GroupOperations extends RollOutWeb {
+public class GroupOperations extends RollOutUsers {
     public GroupOperations(WebDriver driver) {
         super(driver);
     }
@@ -39,7 +38,7 @@ public class GroupOperations extends RollOutWeb {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='User1']")));
         driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
-        driver.findElement(By.cssSelector("a.toolbar_button:nth-child(1)")).click();
+        driver.findElement(By.cssSelector(BUTTOM_DELETE_ALL_USERS)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
         driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
         Thread.sleep(1000);

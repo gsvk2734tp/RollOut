@@ -1,7 +1,6 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +19,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * TfsTestCase xxx-xxx
  */
 @RunWith(value = Parameterized.class)
-public class CreateUserNegative extends RollOutWeb {
+public class CreateUserNegative extends RollOutUsers {
 
     public CreateUserNegative(WebDriver driver) {
         super(driver);

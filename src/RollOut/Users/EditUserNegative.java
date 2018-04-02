@@ -1,7 +1,6 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +18,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class EditUserNegative extends RollOutWeb {
+public class EditUserNegative extends RollOutUsers {
 
     public EditUserNegative(WebDriver driver) {
         super(driver);

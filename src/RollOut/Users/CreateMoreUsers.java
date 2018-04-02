@@ -1,6 +1,5 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +26,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 //TODO Тест не доделан, нужно отредактировать
 
 @RunWith(value = Parameterized.class)
-public class CreateMoreUsers extends RollOutWeb {
+public class CreateMoreUsers extends RollOutUsers {
 
     public CreateMoreUsers(WebDriver driver) {
         super(driver);

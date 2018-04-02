@@ -1,12 +1,11 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(value = Parameterized.class)
-public class Test extends RollOutWeb {
+public class Test extends RollOutUsers {
     public Test(WebDriver driver) {
         super(driver);
     }

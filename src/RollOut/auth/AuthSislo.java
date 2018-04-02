@@ -1,7 +1,7 @@
 package RollOut.auth;
 
 
-import RollOut.RollOutWeb;
+import RollOut.Users.RollOutUsers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 //TODO Тест не сделан, будет доработан после интеграции с NSMS
 
 @RunWith(value = Parameterized.class)
-public class AuthSislo extends RollOutWeb {
+public class AuthSislo extends RollOutUsers {
     public AuthSislo(WebDriver driver) {
         super(driver);
     }

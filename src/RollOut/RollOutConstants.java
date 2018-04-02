@@ -9,6 +9,7 @@ public class RollOutConstants {
     public static final String URL_UBUNTU_USERS = "10.0.15.39:8090/users";
     public static final String LOGIN = "alice";
     public static final String PASSWORD = "P@ssw0rd";
+    public static final String SPEC_SYMBOLS = "!#$%&'*+-/=?^_`{|";
 
     public static final String TITLE_APP = "Rollout.WebApplication";
     public static final String TITLE_SILSO = "Silso";
@@ -17,6 +18,7 @@ public class RollOutConstants {
     public static final String BUTTON_SAVE_USER = "button:nth-child(1)";
     public static final String BUTTON_DELETE_USER = ".icon.icon-web-general.icons-general-delete";
     public static final String BUTTON_DELETE_YES_USER = "button.actions_button:nth-child(1)";
+    public static final String BUTTOM_DELETE_ALL_USERS = "a.toolbar_button:nth-child(1)";
 
     public static final String BUTTON_EDIT_ORG = "tr:nth-child(2) i.table_edit-row-icon";
     public static final String BUTTON_CANCEL_ORG = "button:nth-child(2)";
