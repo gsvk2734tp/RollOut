@@ -1,14 +1,14 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -19,29 +19,33 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * TfsTestCase xxx-xxx
  */
 
-public class DeleteUser extends RollOutWeb {
+@RunWith(value = Parameterized.class)
+public class DeleteUser extends RollOutUsers {
+
+    public DeleteUser(WebDriver driver) {
+        super(driver);
+    }
+
     @Before
     public void setUp() throws InterruptedException {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-        //Открытие
-        driver.get(URL_NSMS_SITE);
+        authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
+        driver.get(URL_NSMS_USERS_TEST);
     }
 
     @Test
     public void deleteUsersAndCheckVisible() throws InterruptedException {
-        int number = 2;
+        int number = 3;
+        Thread.sleep(1000);
         createUsers(number);
 
-        for (int i = number-1; i >= 0; i--) {
+        for (int i = number - 1; i >= 0; i--) {
             driver.findElement(By.xpath("//td[text()='User" + i + "']")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_USER)));
             driver.findElement(By.cssSelector(BUTTON_DELETE_USER)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.actions_button")));
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
             driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             //Проверяем, что пользователь удален
             Assert.assertTrue(driver.findElements(By.xpath("//td[text()='User" + i + "']")).isEmpty());
         }

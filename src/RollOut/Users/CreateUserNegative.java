@@ -1,59 +1,61 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
-import RollOut.RollOutWeb;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-import static RollOut.RollOutConstants.TITLE_APP;
-import static RollOut.RollOutConstants.URL_NSMS_SITE_TEST;
-import static RollOut.RollOutConstants.URL_NSMS_USERS_TEST;
+import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * @author Golyshkin.Dmitriy on 27.03.2018.
- * Автотест, проверяющий негативные сценарии создания пользователя
+ * @author Golyshkin.Dmitriy on 02.04.2018.
+ * Класс, содержащий методы для тестирования пользователей
  * TfsTestCase xxx-xxx
  */
 
-public class CreateUserNegative extends RollOutWeb {
+@RunWith(value = Parameterized.class)
+public class CreateUserNegative extends RollOutUsers {
+
+    public CreateUserNegative(WebDriver driver) {
+        super(driver);
+    }
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().window().maximize();
         authSilso(URL_NSMS_SITE_TEST);
         wait.until(titleIs(TITLE_APP));
         driver.get(URL_NSMS_USERS_TEST);
+
     }
 
     @Test
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка имени негативные сценарии
+        Thread.sleep(1000); //Пропуск анимации
         createUserNegative("", "", ""); // все поля пустые
         createUserNegative("", "gmail@gmail.com", ""); // пустое user
-        createUserNegative("", "gmail@gmail.com", "");
-        // createUser(" \\ / : * ? \" < > | ", "gmail@gmail.com", ""); // спецсимволы, баг
-        createUserNegative(RandomStr.getStr(129), "gmail@gmail.com", "");
-        createUserNegative(RandomStr.getStr(257), "gmail@gmail.com", "");
+        /* Проверка на спецсимволы в имени, запрещены, пока что баг
+        for (char sumb : specSumbUserName) {
+            createUser(specSumb, "gmail@gmail.com", "");
+        } */
+        createUserNegative(RandomStr.getStr(129), "gmail@gmail.com", ""); //имя 129
+        createUserNegative(RandomStr.getStr(257), "gmail@gmail.com", ""); //имя 257
 
         //Проверка email негативные
         createUserNegative("User", "@" + "gmail.com", ""); // локальная 0 симв
         //createUser("User", RandomStr.getStr(64) + "@" + "gmail.com", ""); // локальная 64 симв, баг
-
         /* Проверка на спецсимволы в локальной части, запрещены вначале в локальной части, пока что баг
         for (char sumb : specSumb) {
             createUser("User", sumb + "@" + RandomStr.getStr(3), "");
         } */
-
         createUserNegative("User", "alice" + "@", ""); // доменная 0 симв
-        createUserNegative("User", "alice" + "@" + RandomStr.getStr(65), ""); // доменная более 63 без точки
+        createUserNegative("User", "alice" + "@" + RandomStr.getStr(64), ""); // доменная более 63 без точки
         createUserNegative("User", "1" + "@" + RandomStr.getStrDomain(253), ""); // более 252 симв
 
         // Проверка на спецсимволы, запрещены в доменной части

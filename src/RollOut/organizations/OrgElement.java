@@ -1,72 +1,78 @@
 package RollOut.organizations;
 
+import RollOut.Users.RollOutUsers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * @author Golyshkin.Dmitriy on 27.03.2018.
- * Автотест, проверяющий видимость элементов и корректность текстовок на вкладке Организации
+ * @author Golyshkin.Dmitriy on 28.03.2018.
+ * Автотест, проверяющий видимость элементов на странице с Организациями
  * TfsTestCase xxx-xxx
  */
 
-public class OrgElement {
-    private WebDriver driver;
-    private WebDriverWait wait;
+//TODO: Проверить видимость элементов боковой панели
+//TODO: Проверка видимость элементов на верхней панели
+
+@RunWith(value = Parameterized.class)
+public class OrgElement extends RollOutUsers {
     private Actions actions;
+
+    public OrgElement(WebDriver driver) {
+        super(driver);
+    }
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
         actions = new Actions(driver);
+        authSilso(URL_NSMS_SITE_TEST);
+        wait.until(titleIs(TITLE_APP));
     }
 
     @Test
-    public void orgVisiable() {
-        driver.get(URL_NSMS_SITE);
-        wait.until(titleIs(TITLE_APP));
-
+    public void orgVisiable() throws InterruptedException {
         //Проверка текстовок и всех элементов на центральной странице
-        String s = driver.findElement(By.cssSelector("div.header")).getText();
-        Assert.assertEquals(s, "Организации зарегистрированные в Rollout Center");
         driver.findElement(By.xpath("//div[contains(text(),'Организации зарегистрированные в Rollout Center')]"));
         driver.findElement(By.xpath("//a[text()='Добавить организацию']"));
         driver.findElement(By.xpath("//th[text()='Название']"));
         driver.findElement(By.xpath("//th[text()='URI префикс']"));
-        driver.findElement(By.xpath("//td[text()='Быки и Коровы']"));
+        driver.findElement(By.xpath("//td[text()='Иногенты Юнайтед']"));
         driver.findElement(By.xpath("//td[text()='Ромашка']"));
-        driver.findElement(By.cssSelector("td.organization-list_first-column")).click();
 
         //Проверка невидимого элемента Редактировать у первой в списке Орг
-        Assert.assertTrue(driver.findElement(By.cssSelector("tr:nth-child(2) i.table_edit-row-icon")).isEnabled());
+        Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).isEnabled());
         //Проверка элементов в карточке Организации
-        actions.moveToElement(driver.findElement(By.cssSelector("tr:nth-child(2) i.table_edit-row-icon")));
-        driver.findElement(By.cssSelector("tr:nth-child(2) i.table_edit-row-icon")).click();
+        actions.moveToElement(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)));
+        driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).click();
         driver.findElement(By.xpath("//div[contains(text(),'Данные организации в Rollout Center')]"));
         driver.findElement(By.xpath("//div[contains(text(),'Название:')]"));
         driver.findElement(By.xpath("//div[contains(text(),'URI префикс для авторизации пользователей:')]"));
-        driver.findElement(By.cssSelector("button:nth-child(2)")).click();
+        driver.findElement(By.cssSelector(BUTTON_CANCEL_ORG)).click();
+        Thread.sleep(1000);
 
         //Проверка невидимого элемента Удалить
+        Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).isEnabled());
+        //Проверка элементов в карточке подтверждения удаления организации
+        actions.moveToElement(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)));
+        driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).click();
+        driver.findElement(By.xpath("//div[contains(text(),'Удаление организации')]"));
+        driver.findElement(By.xpath("//div[contains(text(),'Подтвердите удаление \"Ромашка\".')]"));
+        driver.findElement(By.cssSelector(BUTTON_CANCEL_ORG)).click();
+        Thread.sleep(1000);
 
         //Проверка лого
         driver.findElement(By.className("brand_logo"));
         driver.findElement(By.xpath("//span[text()='ViPNet']"));
         driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
-
-        //Проверка боковой панели
-
-        //Проверка шапки
     }
 
     @After
